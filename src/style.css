@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+main {
+  width: 90%;
+  margin-inline: auto;
+  margin-top: 4rem;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+section {
+  background-color: #f9f9f9f8;
+}
+
+section img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 300px;
+}
+
+.modal {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  visibility: hidden;
+  opacity: 0;
+  height: 100vh;
+  width: 100vw;
+  padding: 2rem;
+
+  margin-inline: auto;
+  z-index: 10;
+  transition: all 0.7s ease-in;
+}
+
+.modal.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal::after {
+  content: "";
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  background: black;
+  height: 100vh;
+  width: 100vw;
+  z-index: 2;
+}
+
+.modal img {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  margin-inline: auto;
+  object-fit: contain;
+}
+
+.modal #closeBtn {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  z-index: 7;
+  background-color: yellow;
+  padding: 10px 2rem;
+  cursor: pointer;
+  margin: 1rem 2rem;
+}
+
+.modal .arrows button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 5;
+  background-color: lime;
+  font-weight: bold;
+  height: 35px;
+  width: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal .arrows button:disabled {
+  opacity: 0.5;
+}
+
+#prev {
+  left: 5%;
+}
+
+#next {
+  right: 5%;
+}
