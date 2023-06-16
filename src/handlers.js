@@ -26,13 +26,20 @@ const HANDLERS_MODULE = (() => {
   const mainElementHandler = (e) => {
     if (e.target.localName === "img") {
       CURRENT_IMAGE = parseInt(e.target.dataset.index);
-      UTILS_MODULE.showImageInWindow(e.target.src);
+      UTILS_MODULE.openModalOnSectionClick(e.target.src);
     }
+  };
+
+  const closeModalOnEscHandler = (e) => {
+    if (e.code === "Escape" && modal.classList.contains("active"))
+      UTILS_MODULE.closeModal();
   };
 
   const loadHandler = () => {
     UTILS_MODULE.attachImages();
-    UTILS_MODULE.rovingTabIndex();
+    UTILS_MODULE.navigateBetweenSectionsOnKeyPress();
+
+    addEventListener("keydown", closeModalOnEscHandler);
   };
 
   return {

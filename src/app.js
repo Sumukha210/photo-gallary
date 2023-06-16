@@ -5,10 +5,15 @@ const images = [
   "../assets/(4).jpg",
   "../assets/(5).jpg",
   "../assets/(6).jpg",
-  // "./assets/(7).jpg",
-  // "./assets/(8).jpg",
-  // "./assets/(9).jpg",
-  // "./assets/(10).jpg",
+  "../assets/(7).jpg",
+  "../assets/(8).jpg",
+  "../assets/(9).jpg",
+  "../assets/(11).jpg",
+  "../assets/(12).jpg",
+  "../assets/(13).jpg",
+  "../assets/(14).jpg",
+  "../assets/(15).jpg",
+  "../assets/(16).jpg",
 ];
 
 const main = document.querySelector("main");
@@ -26,7 +31,3 @@ closeBtn.addEventListener("click", UTILS_MODULE.closeModal);
 nextArrow.addEventListener("click", HANDLERS_MODULE.nextArrowHandler);
 prevArrow.addEventListener("click", HANDLERS_MODULE.prevArrowHandler);
 addEventListener("DOMContentLoaded", HANDLERS_MODULE.loadHandler);
-modal.addEventListener(
-  "keydown",
-  (e) => e.code === "Escape" && UTILS_MODULE.closeModal()
-);

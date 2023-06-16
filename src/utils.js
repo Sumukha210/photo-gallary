@@ -16,19 +16,16 @@ const UTILS_MODULE = (() => {
     CURRENT_IMAGE === 0 ? disablePrevBtn() : enablePrevBtn();
   };
 
-  const showImageInWindow = (src) => {
+  const openModalOnSectionClick = (src) => {
     enableDisableBtnsOnModalOpen();
-
     modalImage.src = src;
     modal.classList.add("active");
-    modal.setAttribute("tabIndex", 1);
-    modal.focus();
   };
 
-  const addKeyPressToSection = (section) => {
+  const openModalOnKeyPressOnSection = (section) => {
     section.addEventListener("keypress", (e) => {
       (e.code === "Enter" || e.code === "space") &&
-        showImageInWindow(e.target.firstElementChild.src);
+        openModalOnSectionClick(e.target.firstElementChild.src);
 
       CURRENT_IMAGE = parseInt(e.target.dataset.index);
       enableDisableBtnsOnModalOpen();
@@ -43,7 +40,7 @@ const UTILS_MODULE = (() => {
       <img data-index="${index}" src="${img}" alt="${img}">
       `;
 
-    addKeyPressToSection(section);
+    openModalOnKeyPressOnSection(section);
 
     return section;
   };
@@ -61,7 +58,7 @@ const UTILS_MODULE = (() => {
     });
   };
 
-  const rovingTabIndex = () => {
+  const navigateBetweenSectionsOnKeyPress = () => {
     const sections = main.querySelectorAll(`section[tabindex]`);
     main.addEventListener("keydown", (e) => {
       if (e.code === "Tab") {
@@ -81,11 +78,11 @@ const UTILS_MODULE = (() => {
   };
 
   return {
-    rovingTabIndex,
+    navigateBetweenSectionsOnKeyPress,
     attachImages,
     enableNextBtn,
     disableNextBtn,
-    showImageInWindow,
+    openModalOnSectionClick,
     closeModal,
   };
 })();
